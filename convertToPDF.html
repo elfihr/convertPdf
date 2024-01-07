@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>convertPdf</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        :root{
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .sectionOne{
+            background-color: #6DA4AA ;
+            border: 3px solid #3B3486;
+            box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
+            border-radius: 5px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 350px;
+            margin-top: 200px;
+            padding: 5px;
+        }
+        .teste03{
+            text-align: center;
+        }
+
+        #generatePDF{
+            border: none;
+            height: 40px;
+            border-radius: 4px;
+            background-color: #F9F7C9;
+        }
+
+        #generatePDF:hover{
+            background-color: #fffff9;
+        }
+
+        #generatePDF:active{
+            transform: scale(0.95);
+        }
+
+        @media (max-width:408px ){
+            .sectionOne{
+                height: 400px;
+            }
+        }
+        @media (max-width:3530px ){
+            .sectionOne{
+                height: 500px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section class="sectionOne">
+        <div class="teste03">
+            <h2 class="teste01">Lorem ipsum</h2>
+            <p class="teste02">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
+            
+        </div>
+            <button id="generatePDF">GerarPDF</button>
+    </section>
+    
+    <script>
+        const btnGenToPDF = document.querySelector("#generatePDF");
+
+        btnGenToPDF.addEventListener('click', () => {
+
+            const contentMain = document.querySelector(".teste03")
+
+            const option = {
+                filename:"arquivo.pdf",
+                jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},
+                margim:[10,10,10,10],
+                html2canvas:{scale:2}
+
+            }
+
+            html2pdf().set(option).from(contentMain).save();
+            console.log('oi')
+        })
+    </script>
+</body>
+</html>
